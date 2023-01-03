@@ -10,14 +10,25 @@ import SwiftUI
 struct ProdectCell: View {
     var product: Product
     var body: some View {
-        VStack{
+        VStack(spacing: 4){
             Image("margaritaPizza")
                 .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(maxWidth: screen.width * 0.45)
+                .clipped()
+                .cornerRadius(16)
             HStack{
                 Text(product.title)
+                    .font(.custom("AvenirNext-regular", size: 12))
+                    Spacer()
                 Text("\(product.price) ₽")
-            }
-        }.frame(width: screen.width * 0.45, height: screen.width * 0.65, alignment: .center)
+                    .font(.custom("AvenirNext-bold", size: 12))
+            }.padding(.horizontal, 6)
+                .padding(.bottom, 6)
+        }.frame(width: screen.width * 0.45, height: screen.width * 0.5)
+            .background(.white)
+            .cornerRadius(16)
+            .shadow(radius: 4)
     }
 }
 
