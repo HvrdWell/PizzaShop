@@ -18,7 +18,7 @@ struct AuthView: View {
     
     var body: some View {
         VStack {
-            Text(isAuth ? "Авторизация" : "Регистарция")
+            Text(isAuth ? "Авторизация" : "Регистрация")
                 .padding()
                 .padding(.horizontal, 20)
                 .background(Color.gray)
