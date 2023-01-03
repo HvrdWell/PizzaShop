@@ -13,6 +13,8 @@ struct ProductDetailView: View {
     @State var size = "Средняя"
     @State var count = 1
     
+    @Environment(\.presentationMode) var presetationMode
+    
     var body: some View {
         VStack {
             VStack(alignment: .leading){
@@ -48,7 +50,15 @@ struct ProductDetailView: View {
                 
             }
             Button {
-                print("Добавить в корзину")
+                var position = Position(id: UUID().uuidString,
+                                        product: viewModel.product,
+                                        size: self.size,
+                                        count: self.count)
+                
+                position.product.price = viewModel.gerPrice(size: self.size)
+                
+                CartViewModel.shared.addPosition(position)
+                presetationMode.wrappedValue.dismiss()
             } label: {
                 Text("Добавить в корзину")
                     .padding()
