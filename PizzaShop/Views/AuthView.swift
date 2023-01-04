@@ -13,7 +13,8 @@ struct AuthView: View {
     @State private var email = ""
     @State private var password = ""
     @State private var confirmPassowrd = ""
-    
+    @State private  var isShowAlert = false
+    @State private var alertMessage = ""
     @State private var isTabViewShow = false
     
     var body: some View {
@@ -32,8 +33,8 @@ struct AuthView: View {
                     .background(.ultraThinMaterial)
                     .cornerRadius(12)
                     .padding(8)
-                    
-                    
+                
+                
                 SecureField("Введите пароль", text: $password)
                     .padding()
                     .background(.ultraThinMaterial)
@@ -47,17 +48,32 @@ struct AuthView: View {
                         .cornerRadius(12)
                         .padding(8)
                 }
-
+                
                 Button {
                     if isAuth {
                         print("Авторизация")
                         isTabViewShow.toggle()
                     } else{
-                        self.email = ""
-                        self.password = ""
-                        self.confirmPassowrd = ""
-                        self.isAuth.toggle()
-
+                        guard password == confirmPassowrd else {
+                            self.alertMessage = "Пароли не совпадают!"
+                            self.isShowAlert.toggle()
+                            return
+                        }
+                        AuthService.shared.signUp(email: self.email, password: self.password){ result in
+                            switch result{
+                            case .success(let user):
+                                alertMessage = "Вы зарегистрировались с email \(user.email!)"
+                                self.isShowAlert.toggle()
+                                self.email = ""
+                                self.password = ""
+                                self.confirmPassowrd = ""
+                            case .failure(let error):
+                                alertMessage = "Ошибка регистрации\(error.localizedDescription)"
+                                self.isShowAlert.toggle()
+                            }
+                        }
+                        
+                        
                     }
                     
                 } label: {
@@ -69,7 +85,7 @@ struct AuthView: View {
                 .background(LinearGradient(colors: [Color ("yellow"),Color ("orange")], startPoint: .leading, endPoint: .trailing))
                 .cornerRadius(12)
                 .padding(9)
-
+                
                 Button {
                     isAuth.toggle()
                 } label: {
@@ -81,22 +97,29 @@ struct AuthView: View {
                         .font(.title3)
                         .bold()
                         .foregroundColor(Color.yellow)
-                    
+                        .alert(alertMessage, isPresented: $isShowAlert) {
+                            Button {
+                            } label: {
+                                Text("Ok")
+                            }
+                        }
                     
                 }
-
+                
             }
             .padding(25)
             .background(Color.gray)
-                .cornerRadius(30)
-                .padding(isAuth ? 20 : 10)
-                
+            .cornerRadius(30)
+            .padding(isAuth ? 20 : 10)
+            
+            
+            
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Image("pizzaBackground").blur(radius: isAuth ? 0 : 12))
-        .animation(Animation.easeInOut(duration: 0.3), value: isAuth)
-        .fullScreenCover(isPresented: $isTabViewShow) {
-            MainTabBar( )
-        }
+            .background(Image("pizzaBackground").blur(radius: isAuth ? 0 : 12))
+            .animation(Animation.easeInOut(duration: 0.3), value: isAuth)
+            .fullScreenCover(isPresented: $isTabViewShow) {
+                MainTabBar( )
+            }
         
     }
 }
