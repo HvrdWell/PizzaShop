@@ -52,7 +52,16 @@ struct AuthView: View {
                 Button {
                     if isAuth {
                         print("Авторизация")
-                        isTabViewShow.toggle()
+                        AuthService.shared.signIn(email: self.email, password: self.password) { result in
+                            switch result{
+                            case .success(let user):
+                                isTabViewShow.toggle()
+                            case .failure(let error):
+                                alertMessage = "Ошибка входа\(error.localizedDescription)"
+                                self.password = ""
+                                self.isShowAlert.toggle()
+                            }
+                        }
                     } else{
                         guard password == confirmPassowrd else {
                             self.alertMessage = "Пароли не совпадают!"
@@ -67,6 +76,7 @@ struct AuthView: View {
                                 self.email = ""
                                 self.password = ""
                                 self.confirmPassowrd = ""
+                                isAuth.toggle()
                             case .failure(let error):
                                 alertMessage = "Ошибка регистрации\(error.localizedDescription)"
                                 self.isShowAlert.toggle()
@@ -115,10 +125,14 @@ struct AuthView: View {
             
             
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Image("pizzaBackground").blur(radius: isAuth ? 0 : 12))
+            .background(Image("pizzaBackground")
+                .blur(radius: isAuth ? 0 : 12)
+            )
             .animation(Animation.easeInOut(duration: 0.3), value: isAuth)
             .fullScreenCover(isPresented: $isTabViewShow) {
-                MainTabBar( )
+                
+                var mainTabBarViewModel = MainTabBarViewModel(user: AuthService.shared.currentUser!)
+                MainTabBar(viewModel: mainTabBarViewModel)
             }
         
     }

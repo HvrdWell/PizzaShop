@@ -12,6 +12,7 @@
 		93079C252965C58A00696929 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 93079C242965C58A00696929 /* FirebaseFirestore */; };
 		93079C272965C58A00696929 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 93079C262965C58A00696929 /* FirebaseStorage */; };
 		93079C292965C7CF00696929 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93079C282965C7CF00696929 /* AuthService.swift */; };
+		93079C2C2965DEFF00696929 /* MainTabBarViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93079C2B2965DEFF00696929 /* MainTabBarViewMode.swift */; };
 		937772C2296384CC0070F746 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937772C1296384CC0070F746 /* MainTabBar.swift */; };
 		937772C4296386FF0070F746 /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937772C3296386FF0070F746 /* CatalogView.swift */; };
 		937772C6296387080070F746 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937772C5296387080070F746 /* CartView.swift */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		93079C1F2965C47600696929 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		93079C282965C7CF00696929 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		93079C2B2965DEFF00696929 /* MainTabBarViewMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewMode.swift; sourceTree = "<group>"; };
 		937772C1296384CC0070F746 /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		937772C3296386FF0070F746 /* CatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogView.swift; sourceTree = "<group>"; };
 		937772C5296387080070F746 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				93A11CAA2964C09700439BD2 /* CatalogViewModel.swift */,
 				93A11CB02964CB0E00439BD2 /* ProductDetailViewModel.swift */,
 				93A11CB22964D91900439BD2 /* CartViewModel.swift */,
+				93079C2B2965DEFF00696929 /* MainTabBarViewMode.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				93A11CAD2964C81300439BD2 /* ProductDetailView.swift in Sources */,
 				939C6E07296377E900F06C7E /* AuthView.swift in Sources */,
 				937772C4296386FF0070F746 /* CatalogView.swift in Sources */,
+				93079C2C2965DEFF00696929 /* MainTabBarViewMode.swift in Sources */,
 				939C6E05296377E900F06C7E /* PizzaShopApp.swift in Sources */,
 				93A11CB12964CB0E00439BD2 /* ProductDetailViewModel.swift in Sources */,
 				93A11CB82964EA3000439BD2 /* PositionCell.swift in Sources */,
