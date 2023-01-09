@@ -12,7 +12,10 @@ struct ProfileView: View {
     @State var isAvaAlertPresented = false
     @State var isQuitAlertPresented = false
     @State var isAuthViewPresented = false
-
+    
+    @StateObject var viewModel : ProfileViewModel
+    
+    
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
             HStack(spacing:30) {
@@ -39,53 +42,61 @@ struct ProfileView: View {
                         
                     }
                 
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Мирослава Филиппецкий")
-                        .bold()
-                    Text("+ 7 9152222222")
+                VStack(alignment: .leading, spacing: 12) {
+                    TextField("Имя", text: $viewModel.profile.name)
+                        .font(.body.bold())
+                    HStack{
+                        Text("+7")
+                        TextField("Телефон", value: $viewModel.profile.phone, format: .number)
+                    }
                 }
-            }
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Адрес доставки")
-                        .bold()
-                    
-                    Text("Россия, Московскаая область, г. Нижний Уренгой, ул, Юсасп, дом. 3, кв. 44")
-                }
+            }.padding(.horizontal)
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Адрес доставки")
+                    .bold()
+                
+                TextField("Ваш адрес", text: $viewModel.profile.address)
+            }.padding(.horizontal)
             
-                //табл с заказами
-                List {
-                    Text("Ваши заказы будут тут")
-                }.listStyle(.plain)
-                Button {
-                    isQuitAlertPresented.toggle()
-                } label: {
-                    Text("Выйти")
-                        .padding()
-                        .padding(.horizontal, 30)
-                        .foregroundColor(.white)
-                        .background(Color.red)
-                        .cornerRadius(20)
-                    
-                }.padding( )
+            //табл с заказами
+            List {
+                Text("Ваши заказы будут тут")
+            }.listStyle(.plain)
+            Button {
+                isQuitAlertPresented.toggle()
+            } label: {
+                Text("Выйти")
+                    .padding()
+                    .padding(.horizontal, 30)
+                    .foregroundColor(.white)
+                    .background(Color.red)
+                    .cornerRadius(20)
+                
+            }.padding( )
                 .confirmationDialog("Точно ли выйти?", isPresented: $isQuitAlertPresented) {
                     Button {
                         isAuthViewPresented.toggle()
                     } label: {
                         Text("Да")
                     }
-
+                    
                 }
+            
                 .fullScreenCover(isPresented: $isAuthViewPresented, onDismiss: nil) {
                     AuthView()
                 }
-                
-                
-            }
+            
+        }.onSubmit {
+            viewModel.setProfile()
+        }
+        .onAppear{
+            self.viewModel.getProfile()
         }
     }
-    
-    struct ProfileView_Previews: PreviewProvider {
-        static var previews: some View {
-            ProfileView()
-        }
+}
+
+struct ProfileView_Previews: PreviewProvider {
+    static var previews: some View {
+        ProfileView(viewModel: ProfileViewModel(profile: MUser(id: "", name: "fd", phone: 443, address: "fdv")))
     }
+}

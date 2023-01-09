@@ -10,7 +10,7 @@ import Foundation
 class CatalogViewModel: ObservableObject{
     
     static let shared = CatalogViewModel( )
-    
+ 
     var popularProducts = [
         Product(
             id: "1",

@@ -78,7 +78,7 @@ struct AuthView: View {
                                 self.confirmPassowrd = ""
                                 isAuth.toggle()
                             case .failure(let error):
-                                alertMessage = "Ошибка регистрации\(error.localizedDescription)"
+                                alertMessage = "Ошибка регистрации \(error.localizedDescription)"
                                 self.isShowAlert.toggle()
                             }
                         }

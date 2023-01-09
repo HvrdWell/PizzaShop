@@ -23,7 +23,12 @@ struct PizzaShopApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
-            AuthView()
+            if let user = AuthService.shared.currentUser{
+                let viewModel = MainTabBarViewModel(user: user)
+                MainTabBar(viewModel: viewModel )
+            }else{
+                AuthView()
+            }
         }
     }
 }
