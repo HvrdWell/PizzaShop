@@ -32,6 +32,9 @@
 		93A11CB32964D91900439BD2 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A11CB22964D91900439BD2 /* CartViewModel.swift */; };
 		93A11CB62964D99100439BD2 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A11CB52964D99100439BD2 /* Position.swift */; };
 		93A11CB82964EA3000439BD2 /* PositionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A11CB72964EA3000439BD2 /* PositionCell.swift */; };
+		93DB52AD296C3C6D00B84C89 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DB52AC296C3C6D00B84C89 /* Order.swift */; };
+		93DB52AF296C5D0D00B84C89 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DB52AE296C5D0D00B84C89 /* OrderStatus.swift */; };
+		93DB52B1296C67F700B84C89 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DB52B0296C67F700B84C89 /* OrderCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +61,9 @@
 		93A11CB22964D91900439BD2 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		93A11CB52964D99100439BD2 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		93A11CB72964EA3000439BD2 /* PositionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionCell.swift; sourceTree = "<group>"; };
+		93DB52AC296C3C6D00B84C89 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		93DB52AE296C5D0D00B84C89 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
+		93DB52B0296C67F700B84C89 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,7 @@
 			children = (
 				937772CC296389710070F746 /* ProdectCell.swift */,
 				93A11CB72964EA3000439BD2 /* PositionCell.swift */,
+				93DB52B0296C67F700B84C89 /* OrderCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -163,6 +170,8 @@
 				937772C9296388480070F746 /* Product.swift */,
 				93A11CB52964D99100439BD2 /* Position.swift */,
 				932416A2296634E000FB9508 /* MUser.swift */,
+				93DB52AC296C3C6D00B84C89 /* Order.swift */,
+				93DB52AE296C5D0D00B84C89 /* OrderStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -248,6 +257,7 @@
 			files = (
 				932416A529663E7700FB9508 /* DatabaseService.swift in Sources */,
 				930937B4296B816400E3B800 /* ProfileViewModel.swift in Sources */,
+				93DB52AD296C3C6D00B84C89 /* Order.swift in Sources */,
 				937772C2296384CC0070F746 /* MainTabBar.swift in Sources */,
 				93A11CAD2964C81300439BD2 /* ProductDetailView.swift in Sources */,
 				939C6E07296377E900F06C7E /* AuthView.swift in Sources */,
@@ -257,6 +267,8 @@
 				93A11CB12964CB0E00439BD2 /* ProductDetailViewModel.swift in Sources */,
 				93A11CB82964EA3000439BD2 /* PositionCell.swift in Sources */,
 				937772C8296387220070F746 /* ProfileView.swift in Sources */,
+				93DB52B1296C67F700B84C89 /* OrderCell.swift in Sources */,
+				93DB52AF296C5D0D00B84C89 /* OrderStatus.swift in Sources */,
 				93A11CB62964D99100439BD2 /* Position.swift in Sources */,
 				937772CD296389710070F746 /* ProdectCell.swift in Sources */,
 				93A11CB32964D91900439BD2 /* CartViewModel.swift in Sources */,

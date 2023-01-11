@@ -52,10 +52,8 @@ struct ProductDetailView: View {
             Button {
                 var position = Position(id: UUID().uuidString,
                                         product: viewModel.product,
-                                        size: self.size,
                                         count: self.count)
                 
-                position.product.price = viewModel.gerPrice(size: self.size)
                 
                 CartViewModel.shared.addPosition(position)
                 presetationMode.wrappedValue.dismiss()

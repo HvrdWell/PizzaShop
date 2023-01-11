@@ -10,7 +10,7 @@ class ProfileViewModel: ObservableObject{
 
     
     @Published var profile: MUser
-    
+    @Published var orders: [Order] = [Order]( )
     init(profile: MUser){
         self.profile = profile
     }
