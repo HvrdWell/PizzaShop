@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93058113296F71AA0019370B /* AdminOrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93058112296F71AA0019370B /* AdminOrdersView.swift */; };
+		93058116296F73B40019370B /* AdminOrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93058115296F73B40019370B /* AdminOrdersViewModel.swift */; };
 		93079C202965C47600696929 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93079C1F2965C47600696929 /* GoogleService-Info.plist */; };
 		93079C232965C58A00696929 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 93079C222965C58A00696929 /* FirebaseAuth */; };
 		93079C252965C58A00696929 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 93079C242965C58A00696929 /* FirebaseFirestore */; };
@@ -38,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		93058112296F71AA0019370B /* AdminOrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminOrdersView.swift; sourceTree = "<group>"; };
+		93058115296F73B40019370B /* AdminOrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminOrdersViewModel.swift; sourceTree = "<group>"; };
 		93079C1F2965C47600696929 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		93079C282965C7CF00696929 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		93079C2B2965DEFF00696929 /* MainTabBarViewMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewMode.swift; sourceTree = "<group>"; };
@@ -80,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		93058114296F71B60019370B /* AdminInterface */ = {
+			isa = PBXGroup;
+			children = (
+				93058112296F71AA0019370B /* AdminOrdersView.swift */,
+			);
+			path = AdminInterface;
+			sourceTree = "<group>";
+		};
 		93079C2A2965C7D300696929 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +111,7 @@
 				937772C1296384CC0070F746 /* MainTabBar.swift */,
 				939C6E06296377E900F06C7E /* AuthView.swift */,
 				93A11CAC2964C81300439BD2 /* ProductDetailView.swift */,
+				93058114296F71B60019370B /* AdminInterface */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -160,6 +173,7 @@
 				93A11CB22964D91900439BD2 /* CartViewModel.swift */,
 				93079C2B2965DEFF00696929 /* MainTabBarViewMode.swift */,
 				930937B3296B816400E3B800 /* ProfileViewModel.swift */,
+				93058115296F73B40019370B /* AdminOrdersViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -256,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				932416A529663E7700FB9508 /* DatabaseService.swift in Sources */,
+				93058116296F73B40019370B /* AdminOrdersViewModel.swift in Sources */,
 				930937B4296B816400E3B800 /* ProfileViewModel.swift in Sources */,
 				93DB52AD296C3C6D00B84C89 /* Order.swift in Sources */,
 				937772C2296384CC0070F746 /* MainTabBar.swift in Sources */,
@@ -266,6 +281,7 @@
 				939C6E05296377E900F06C7E /* PizzaShopApp.swift in Sources */,
 				93A11CB12964CB0E00439BD2 /* ProductDetailViewModel.swift in Sources */,
 				93A11CB82964EA3000439BD2 /* PositionCell.swift in Sources */,
+				93058113296F71AA0019370B /* AdminOrdersView.swift in Sources */,
 				937772C8296387220070F746 /* ProfileView.swift in Sources */,
 				93DB52B1296C67F700B84C89 /* OrderCell.swift in Sources */,
 				93DB52AF296C5D0D00B84C89 /* OrderStatus.swift in Sources */,
