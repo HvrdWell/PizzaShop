@@ -15,7 +15,6 @@ struct Product {
     var imageUrl: String
     var price: Int
     var descript: String
-//    var ordersCount: Int
-//    var isReccomend: Bool
+
     
 }

@@ -14,17 +14,21 @@ import Firebase
         var body: some View {
             HStack {
                 Text("\(order.date)")
-                Text("Cost-\(order.cost)").bold().frame(width:90)
-                Text("\(order.status)").frame(width: 100).foregroundColor(.green)
+                Text("\(order.cost)")
+                    .bold()
+                    .frame(width:100)
+                Text("\(order.status)")
+                    .frame(width: 100)
+                    .foregroundColor(.green)
             }
         }
     }
 
     struct OrderCell_Previews: PreviewProvider {
         static var previews: some View {
-            let ord = Order(userID: "userID",
+            let order = Order(userID: "Айди",
                                date: Date(),
-                               status: "New order")
-            OrderCell(order: ord)
+                               status: "Новый")
+            OrderCell(order: order)
         }
     }
