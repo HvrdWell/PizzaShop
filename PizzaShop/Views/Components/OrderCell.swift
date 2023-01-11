@@ -8,23 +8,23 @@
 import SwiftUI
 import Firebase
 
-struct OrderCell: View {
-    
-    @State  var order: Order = Order(userID: "", date: Date(), status: "Новый")
-    var body: some View {
-        HStack{
-            Text("\(order.date)")
-            Text("\(order.cost)")
-                .bold()
-            Text("\(order.status)")
-                .frame(width: 140)
-
+    struct OrderCell: View {
+        var order: Order
+        
+        var body: some View {
+            HStack {
+                Text("\(order.date)")
+                Text("Cost-\(order.cost)").bold().frame(width:90)
+                Text("\(order.status)").frame(width: 100).foregroundColor(.green)
+            }
         }
     }
-}
 
-struct OrderCell_Previews: PreviewProvider {
-    static var previews: some View {
-        OrderCell()
+    struct OrderCell_Previews: PreviewProvider {
+        static var previews: some View {
+            let ord = Order(userID: "userID",
+                               date: Date(),
+                               status: "New order")
+            OrderCell(order: ord)
+        }
     }
-}

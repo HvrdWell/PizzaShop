@@ -14,7 +14,18 @@ class ProfileViewModel: ObservableObject{
     init(profile: MUser){
         self.profile = profile
     }
-    
+    func getOrders( ) {
+        DatabaseService.shared.gerOrders(by: AuthService.shared.currentUser!.accessibilityHint) { result  in
+            switch result {
+                
+            case .success(let orders):
+                self.orders = orders
+                print("Всего заказов: \(orders.count)")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
     func setProfile( ) {
         DatabaseService.shared.setProfile(user: self.profile){ Result in
             switch Result {

@@ -23,13 +23,13 @@ class DatabaseService {
     
     private init ( ) { }
     
-    func gerOrders(by UserID: String?, completion: @escaping (Result<[Order], Error>) -> ( )) {
+    func gerOrders(by userID: String?, completion: @escaping (Result<[Order], Error>) -> (Void)) {
         
         self.ordersRef.getDocuments { qsnap, error in
-            if let qsnap = qsnap{
+            if let qsnap{
                 var orders = [Order]( )
                 for doc in qsnap.documents{
-                    if let userID = UserID{
+                    if let userID{
                         if let order = Order(doc: doc), order.userID == userID {
                             orders.append(order)
                         }
@@ -49,7 +49,7 @@ class DatabaseService {
 
     func setOrder(order: Order, completion: @escaping (Result<Order, Error>) -> (Void) ) {
         ordersRef.document(order.id).setData(order.representation){ error in
-            if let error = error{
+            if let error {
                 completion(.failure(error))
             } else{
                 self.setPositions(to: order.id, positions: order.positions) { result in
@@ -76,7 +76,7 @@ class DatabaseService {
         completion(.success(positions))
     }
     
-    //
+
     func setProfile(user: MUser, completion: @escaping (Result<MUser, Error>) -> (Void) ) {
         usersRef.document(user.id).setData(user.representation){ error in
             if let error = error {

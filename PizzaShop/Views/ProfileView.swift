@@ -60,7 +60,13 @@ struct ProfileView: View {
             
             //табл с заказами
             List {
-                Text("Ваши заказы будут тут")
+                if viewModel.orders.count == 0 {
+                    Text("Ваши заказы будут тут")
+                } else{
+                    ForEach(viewModel.orders, id: \.id) { order in
+                        OrderCell(order: order)
+                    }
+                }
             }.listStyle(.plain)
             Button {
                 isQuitAlertPresented.toggle()
@@ -86,11 +92,13 @@ struct ProfileView: View {
                     AuthView()
                 }
             
-        }.onSubmit {
+        }
+        .onSubmit {
             viewModel.setProfile()
         }
         .onAppear{
             self.viewModel.getProfile()
+            self.viewModel.getOrders()
         }
     }
 }

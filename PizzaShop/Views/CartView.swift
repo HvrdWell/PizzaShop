@@ -48,8 +48,10 @@ struct CartView: View {
                 }
                 Button {
                     print("add")
-                    var order = Order(userID: AuthService.shared.currentUser!.uid, date: Date(), status: "Новый")
-                    order.positions = self.viewModel.positions
+                    var order = Order(userID: AuthService.shared.currentUser!.uid,
+                                                     date: Date(),
+                                                         status: OrderStatus.new.rawValue)
+                                       order.positions = self.viewModel.positions
                     
                     DatabaseService.shared.setOrder(order: order){ result in
                         switch result{
