@@ -21,6 +21,8 @@ struct OrderView: View{
                 ForEach(viewModel.order.positions, id: \.id){ position in
                     PositionCell(position: position)
                 }
+                Text("Итого:\(viewModel.order.cost) ₽")
+                    .bold()
             }
         }.padding()
     }
