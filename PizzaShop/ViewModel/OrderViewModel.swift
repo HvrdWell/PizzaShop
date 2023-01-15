@@ -14,7 +14,14 @@ class OrderViewModel: ObservableObject {
         self.order = order
     }
     func getUserData() {
-      //  DatabaseService.shared.getProfile(completion: <#T##(Result<MUser, Error>) -> (Void)#>)
+        DatabaseService.shared.getProfile(by: order.userID, completion: { result in
+            switch result {
+            case .success(let user):
+                self.user = user
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        })
     }
     
 }
