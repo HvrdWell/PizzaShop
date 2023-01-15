@@ -11,7 +11,7 @@ import FirebaseFirestore
 class DatabaseService {
     
     static let shared = DatabaseService( )
-    //ссылка на бд
+
     private let db = Firestore.firestore()
     
     private var usersRef: CollectionReference {
@@ -41,7 +41,6 @@ class DatabaseService {
         }
     }
     func gerOrders(by userID: String?, completion: @escaping (Result<[Order], Error>) -> (Void)) {
-        
         self.ordersRef.getDocuments { qsnap, error in
             if let qsnap{
                 var orders = [Order]( )
@@ -106,7 +105,7 @@ class DatabaseService {
     }
 
   
-    func getProfile (completion: @escaping (Result<MUser, Error> )  -> (Void ) ) {
+    func getProfile (by userId: String? = nil ,completion: @escaping (Result<MUser, Error> )  -> (Void ) ) {
         usersRef.document(AuthService.shared.currentUser!.uid).getDocument { docSnapshot, error in
             
             guard let snap = docSnapshot else {return}

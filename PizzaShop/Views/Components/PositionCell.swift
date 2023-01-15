@@ -16,6 +16,8 @@ struct PositionCell: View {
             VStack(alignment: .leading , spacing: 2) {
                 Text(position.product.title)
                     .fontWeight(.bold)
+                Text(position.size)
+                    .font(.caption)
 
             }
             Spacer( )
@@ -28,7 +30,7 @@ struct PositionCell: View {
 
 struct PositionCell_Previews: PreviewProvider {
     static var previews: some View {
-        PositionCell(position: Position(id: UUID().uuidString, product: Product(id: UUID().uuidString, title: "Маргарита Гурме",imageUrl: "margarita", price: 350, descript: "fdds"),count: 3)
+        PositionCell(position: Position(id: UUID().uuidString, product: Product(id: UUID().uuidString, title: "Маргарита Гурме",imageUrl: "margarita", price: 350, descript: "fdds"),count: 3,price: 1, size: "большая")
                      
         )
     }

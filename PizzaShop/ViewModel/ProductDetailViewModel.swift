@@ -15,7 +15,7 @@ class ProductDetailViewModel: ObservableObject {
     init(product: Product) {
         self.product = product
     }
-    func gerPrice(size: String) -> Int {
+    func getPrice(size: String) -> Int {
         switch size {
         case "Маленькая" : return product.price
         case "Средняя" : return Int(Double(product.price) * 1.25)

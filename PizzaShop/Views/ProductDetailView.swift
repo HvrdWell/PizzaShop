@@ -25,7 +25,7 @@ struct ProductDetailView: View {
                     Text("\(viewModel.product.title)!")
                         .font(.title2).bold()
                     Spacer( )
-                    Text("\(viewModel.gerPrice(size: size)) ₽")
+                    Text("\(viewModel.getPrice(size: size)) ₽")
                         .font(.title2)
                     
                 }.padding(.horizontal)
@@ -52,8 +52,9 @@ struct ProductDetailView: View {
             Button {
                 var position = Position(id: UUID().uuidString,
                                         product: viewModel.product,
-                                        count: self.count)
-                
+                                        count: self.count,
+                                        price: viewModel.getPrice(size: self.size),
+                                        size: self.size)
                 
                 CartViewModel.shared.addPosition(position)
                 presetationMode.wrappedValue.dismiss()

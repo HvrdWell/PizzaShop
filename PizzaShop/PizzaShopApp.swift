@@ -24,7 +24,7 @@ struct PizzaShopApp: App {
     var body: some Scene {
         WindowGroup {
             if let user = AuthService.shared.currentUser{
-                if user.uid == "5ntRBPmK8zRQA0VAX8MSV4wG0Kl2"{
+                if user.uid == "5ntRBPmK8zRQA0VAX8MSV4wG0Kl"{
                     AdminOrdersView( )
                 }else {
                     let viewModel = MainTabBarViewModel(user: user)

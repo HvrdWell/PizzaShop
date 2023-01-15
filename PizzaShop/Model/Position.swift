@@ -12,10 +12,10 @@ struct Position: Identifiable {
     var id: String
     let product: Product
     let count: Int
-    
-    
+    let price: Int
+    var size: String
     var cost: Int{
-        return product.price * self.count
+        return price * self.count 
     }
     
     var representation: [String: Any] {
@@ -24,14 +24,18 @@ struct Position: Identifiable {
         repres["id"] = id
         repres["count"] = count
         repres["title"] = product.title
-        repres["price"] = product.price
-        repres["cost"] = self.cost
+        repres["price"] = self.price
+        repres["total"] = self.cost
+        repres["size"] = self.size
         return repres
     }
-    internal init(id: String, product: Product, count: Int) {
+    internal init(id: String, product: Product, count: Int, price: Int, size: String) {
         self.id = id
         self.product = product
         self.count = count
+        self.price = price
+        self.size = size
+
     }
     
     init?(doc:  QueryDocumentSnapshot) {
@@ -39,13 +43,16 @@ struct Position: Identifiable {
         
         guard let id = data["id"] as? String else { return nil }
         guard let price = data["price"] as? Int else { return nil }
-        guard let title = data["title"] as? String else { return nil }
-        let product: Product = Product(id: "", title: "", imageUrl: "", price: price, descript: "")
         guard let count = data ["count"] as? Int else { return nil }
+        guard let title = data["title"] as? String else { return nil }
+        guard let size = data["size"] as? String else {return nil}
+        let product: Product = Product(id: "", title: "", imageUrl: "", price: price, descript: "")
+        
         
         self.id = id
         self.product = product
         self.count = count
-
+        self.price = price
+        self.size = size
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 class AdminOrdersViewModel : ObservableObject {
     
     @Published var orders = [Order]( )
-    
+    var currentOrder = Order(userID: "", date: Date(), status: "")
     func getOrders( ) {
         DatabaseService.shared.gerOrders(by: nil) { result in
             switch result{

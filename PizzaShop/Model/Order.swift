@@ -13,7 +13,7 @@ struct Order {
     var positions = [Position]( )
     var date: Date
     var status: String
-    
+
     var cost: Int{
         var sum = 0
         for position in positions {
@@ -26,7 +26,7 @@ struct Order {
              "id": id,
              "userID": userID,
              "date": Timestamp(date: Date()),
-             "status": status
+             "status": status,
          ]
      }
     init(userID: String, date: Date, status: String ){
@@ -35,6 +35,7 @@ struct Order {
         //var positions = [Position]()
         self.date = date
         self.status = status
+
     }
     
     init?(doc: QueryDocumentSnapshot) {
@@ -43,6 +44,7 @@ struct Order {
         guard let userID = data["userID"] as? String else {return nil}
         guard let date = data["date"] as? Timestamp else {return nil}
         guard let status = data["status"] as? String else {return nil}
+
         
         self.id = id
         self.userID = userID
