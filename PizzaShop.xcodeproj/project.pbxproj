@@ -39,6 +39,8 @@
 		93DB52AD296C3C6D00B84C89 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DB52AC296C3C6D00B84C89 /* Order.swift */; };
 		93DB52AF296C5D0D00B84C89 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DB52AE296C5D0D00B84C89 /* OrderStatus.swift */; };
 		93DB52B1296C67F700B84C89 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DB52B0296C67F700B84C89 /* OrderCell.swift */; };
+		93DF738A297494EA00BE7B2A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DF7389297494EA00BE7B2A /* ImagePicker.swift */; };
+		93DF738C2974A5FD00BE7B2A /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DF738B2974A5FD00BE7B2A /* AddProductView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +74,8 @@
 		93DB52AC296C3C6D00B84C89 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		93DB52AE296C5D0D00B84C89 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
 		93DB52B0296C67F700B84C89 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
+		93DF7389297494EA00BE7B2A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		93DF738B2974A5FD00BE7B2A /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,7 @@
 			children = (
 				93058112296F71AA0019370B /* AdminOrdersView.swift */,
 				93058117296F76070019370B /* OrderView.swift */,
+				93DF738B2974A5FD00BE7B2A /* AddProductView.swift */,
 			);
 			path = AdminInterface;
 			sourceTree = "<group>";
@@ -127,6 +132,7 @@
 				937772CC296389710070F746 /* ProdectCell.swift */,
 				93A11CB72964EA3000439BD2 /* PositionCell.swift */,
 				93DB52B0296C67F700B84C89 /* OrderCell.swift */,
+				93DF7389297494EA00BE7B2A /* ImagePicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -278,6 +284,7 @@
 				932416A529663E7700FB9508 /* DatabaseService.swift in Sources */,
 				93058116296F73B40019370B /* AdminOrdersViewModel.swift in Sources */,
 				930937B4296B816400E3B800 /* ProfileViewModel.swift in Sources */,
+				93DF738A297494EA00BE7B2A /* ImagePicker.swift in Sources */,
 				93DB52AD296C3C6D00B84C89 /* Order.swift in Sources */,
 				937772C2296384CC0070F746 /* MainTabBar.swift in Sources */,
 				93A11CAD2964C81300439BD2 /* ProductDetailView.swift in Sources */,
@@ -290,6 +297,7 @@
 				93058113296F71AA0019370B /* AdminOrdersView.swift in Sources */,
 				937772C8296387220070F746 /* ProfileView.swift in Sources */,
 				93DB52B1296C67F700B84C89 /* OrderCell.swift in Sources */,
+				93DF738C2974A5FD00BE7B2A /* AddProductView.swift in Sources */,
 				93DB52AF296C5D0D00B84C89 /* OrderStatus.swift in Sources */,
 				93A11CB62964D99100439BD2 /* Position.swift in Sources */,
 				937772CD296389710070F746 /* ProdectCell.swift in Sources */,
@@ -432,6 +440,8 @@
 				DEVELOPMENT_TEAM = 269JFZMZB7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Разрешите использовать камеру";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Разрешите открыть галерею для выбора фото";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -461,6 +471,8 @@
 				DEVELOPMENT_TEAM = 269JFZMZB7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Разрешите использовать камеру";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Разрешите открыть галерею для выбора фото";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
