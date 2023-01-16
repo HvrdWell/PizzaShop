@@ -54,7 +54,7 @@ struct AuthView: View {
                         print("Авторизация")
                         AuthService.shared.signIn(email: self.email, password: self.password) { result in
                             switch result{
-                            case .success(let user):
+                            case .success(_):
                                 isTabViewShow.toggle()
                             case .failure(let error):
                                 alertMessage = "Ошибка входа\(error.localizedDescription)"
@@ -105,7 +105,7 @@ struct AuthView: View {
                         .padding(.top, 8)
                         .padding(.horizontal, 12)
                         .font(.title3)
-                        .bold()
+                       //.bold()
                         .foregroundColor(Color.yellow)
                         .alert(alertMessage, isPresented: $isShowAlert) {
                             Button {

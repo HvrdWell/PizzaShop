@@ -11,16 +11,12 @@ import FirebaseFirestore
 class DatabaseService {
     
     static let shared = DatabaseService( )
-
+    
     private let db = Firestore.firestore()
     
-    private var usersRef: CollectionReference {
-        return db.collection("users")
-    }
-    private var ordersRef: CollectionReference{
-        return db.collection("orders")
-    }
-    
+    private var usersRef: CollectionReference { return db.collection("users") }
+    private var ordersRef: CollectionReference{ return db.collection("orders") }
+    private var productsRef: CollectionReference { db.collection("products") }
     private init ( ) { }
     
     func getPositions(by orderID: String, completion: @escaping (Result<[Position], Error>) -> (Void)) {
@@ -62,7 +58,7 @@ class DatabaseService {
             }
         }
     }
-
+    
     func setOrder(order: Order, completion: @escaping (Result<Order, Error>) -> (Void) ) {
         ordersRef.document(order.id).setData(order.representation){ error in
             if let error {
@@ -76,13 +72,13 @@ class DatabaseService {
                         print(error.localizedDescription)
                     }
                 }
-                    completion(.success(order))
-                }
+                completion(.success(order))
+            }
         }
     }
     func setPositions(to orderId: String,
-                                  positions: [Position],
-                                  completion: @escaping(Result<[Position], Error>) -> (Void) ) {
+                      positions: [Position],
+                      completion: @escaping(Result<[Position], Error>) -> (Void) ) {
         
         let positionsRef = ordersRef.document(orderId).collection("positions")
         
@@ -92,7 +88,7 @@ class DatabaseService {
         completion(.success(positions))
     }
     
-
+    
     func setProfile(user: MUser, completion: @escaping (Result<MUser, Error>) -> (Void) ) {
         usersRef.document(user.id).setData(user.representation){ error in
             if let error = error {
@@ -103,8 +99,8 @@ class DatabaseService {
             
         }
     }
-
-  
+    
+    
     func getProfile (by userId: String? = nil ,completion: @escaping (Result<MUser, Error> )  -> (Void ) ) {
         usersRef.document(userId != nil ? userId! : AuthService.shared.currentUser!.uid).getDocument { docSnapshot, error in
             
@@ -116,9 +112,27 @@ class DatabaseService {
             guard let address = data["address"] as? String else {return}
             
             let user = MUser (id: id, name: userName, phone: phone, address: address)
-
+            
             completion(.success(user))
-
+            
+        }
+    }
+    func setProduct(product: Product, image: Data, completion: @escaping (Result<Product, Error> )  -> (Void ) ) {
+        StorageService.shared.upload(id: product.id, image: image) { result in
+            switch result {
+            case .success(let sizeInfo):
+                print(sizeInfo)
+                
+                self.productsRef.document(product.id).setData(product.representation) { error in
+                    if let error = error {
+                        completion(.failure(error))
+                    }else {
+                        completion(.success(product))
+                    }
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
         }
     }
 }

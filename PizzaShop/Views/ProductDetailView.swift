@@ -50,7 +50,7 @@ struct ProductDetailView: View {
                 
             }
             Button {
-                var position = Position(id: UUID().uuidString,
+                let position = Position(id: UUID().uuidString,
                                         product: viewModel.product,
                                         count: self.count,
                                         price: viewModel.getPrice(size: self.size),
