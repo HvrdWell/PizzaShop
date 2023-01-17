@@ -6,19 +6,19 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct ProductDetailView: View {
     
-    var viewModel: ProductDetailViewModel
+    @State var viewModel: ProductDetailViewModel
     @State var size = "Средняя"
     @State var count = 1
-    
     @Environment(\.presentationMode) var presetationMode
     
     var body: some View {
         VStack {
             VStack(alignment: .leading){
-                Image("margaritaPizza")
+                Image(uiImage: self.viewModel.image)
                     .resizable()
                     .frame(maxWidth: .infinity,  maxHeight: 200)
                 HStack {
@@ -67,6 +67,8 @@ struct ProductDetailView: View {
                     .background(LinearGradient(colors: [Color ("yellow"),Color ("orange")], startPoint: .leading, endPoint: .trailing))
                     .cornerRadius(15)
                 
+            }.onAppear{
+                self.viewModel.getImage( )
             }
             Spacer( )
         }

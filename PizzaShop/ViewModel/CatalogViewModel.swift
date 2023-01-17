@@ -11,7 +11,7 @@ class CatalogViewModel: ObservableObject{
     
     static let shared = CatalogViewModel( )
  
-    var popularProducts = [
+   @Published var popularProducts = [
         Product(
             id: "1",
             title:"Маргарита" ,
@@ -37,7 +37,7 @@ class CatalogViewModel: ObservableObject{
             price: 450,
             descript: "Дешевая"),
     ]
-    var pizza = [
+    @Published var pizza = [
         Product(
             id: "1",
             title:"Маргарита" ,
@@ -62,5 +62,24 @@ class CatalogViewModel: ObservableObject{
             imageUrl: "not found",
             price: 450,
             descript: "Дешевая"),
+        Product(
+            id: "5",
+            title:"Маргарита четвертая" ,
+            imageUrl: "not found",
+            price: 450,
+            descript: "Дешевая"),
     ]
+    
+    func getProducts( ){
+        DatabaseService.shared.getProducts { result in
+            switch result{
+                
+            case .success(let products):
+                self.pizza = products
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
 }

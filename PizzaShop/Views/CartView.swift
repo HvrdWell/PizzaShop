@@ -9,7 +9,8 @@ import SwiftUI
 
 struct CartView: View {
     @StateObject var viewModel: CartViewModel
-    
+    @State private var showAlert = false
+    @State private var showMakeOrderAlert = false
     var body: some View {
         VStack {
             List(viewModel.positions){ position in
@@ -36,8 +37,9 @@ struct CartView: View {
             
             HStack(spacing: 24){
                 Button {
-                    print("cancel")
-                } label: {
+                    showAlert.toggle()
+                    
+                }label: {
                     Text("Отменить")
                         .font(.body)
                         .fontWeight(.bold)
@@ -45,13 +47,25 @@ struct CartView: View {
                         .foregroundColor(.white)
                         .background(Color.red)
                         .cornerRadius(15)
+                }.confirmationDialog(
+                    "Очистить корзину?",
+                    isPresented: $showAlert,
+                    titleVisibility: .visible
+                ) {
+                    Button("Да", role: .destructive) {
+                        withAnimation {
+                            CartViewModel.shared.clearPositions()
+                        }
+                    }.keyboardShortcut(.defaultAction)
+
+                    Button("Нет", role: .cancel) {}
                 }
                 Button {
                     print("add")
                     var order = Order(userID: AuthService.shared.currentUser!.uid,
-                                                     date: Date(),
+                                      date: Date(),
                                       status: OrderStatus.new.rawValue)
-                                       order.positions = self.viewModel.positions
+                    order.positions = self.viewModel.positions
                     
                     DatabaseService.shared.setOrder(order: order){ result in
                         switch result{
@@ -61,6 +75,8 @@ struct CartView: View {
                             print(error.localizedDescription)
                         }
                     }
+                    CartViewModel.shared.clearPositions()
+                    showMakeOrderAlert.toggle()
                 } label: {
                     Text("Заказать")
                         .font(.body)
@@ -70,6 +86,11 @@ struct CartView: View {
                         .frame(maxWidth: .infinity)
                         .background(Color.green)
                         .cornerRadius(15)
+                }
+            }.alert("Ваш заказ оформлен", isPresented: $showMakeOrderAlert) {
+                Button {
+                } label: {
+                    Text("Хорошо")
                 }
             }
             

@@ -10,7 +10,7 @@ import SwiftUI
 struct CatalogView: View {
     let layoutForPopular = [GridItem(.adaptive(minimum: screen.width / 2.2))]
     let layoutForPizza = [GridItem(.adaptive(minimum: screen.width / 2.4))]
-
+    @StateObject var viewModel =  CatalogViewModel( )
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false){
@@ -39,7 +39,7 @@ struct CatalogView: View {
             Section("Пицца"){
                 ScrollView(.vertical, showsIndicators: false){
                     LazyVGrid(columns: layoutForPizza) {
-                        ForEach(CatalogViewModel.shared.popularProducts,  id: \.id){item in
+                        ForEach(viewModel.pizza,  id: \.id){item in
                             NavigationLink {
                                 let viewModel = ProductDetailViewModel(product: item)
                                 ProductDetailView(viewModel: viewModel)
@@ -53,7 +53,9 @@ struct CatalogView: View {
             }
         }.navigationBarHidden(false)
             .navigationTitle("Меню")
-        
+            .onAppear {
+                self.viewModel.getProducts()
+            }
     }
 }
 

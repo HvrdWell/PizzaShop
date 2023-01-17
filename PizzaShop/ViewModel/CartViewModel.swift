@@ -24,5 +24,8 @@ class CartViewModel : ObservableObject {
     func addPosition(_ position: Position){
         self.positions.append(position)
     }
+    func clearPositions (){
+        positions.removeAll()
+    }
     
 }
