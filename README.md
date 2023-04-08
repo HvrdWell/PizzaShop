@@ -1,5 +1,4 @@
 # PizzaShop
-# IN THE PROCESS
 
 Educational application on swiftui.
 
